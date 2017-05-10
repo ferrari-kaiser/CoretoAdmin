@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_validar_voucher"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Validar Voucher" />
+        <item
+            android:id="@+id/nav_financeiro"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Financeiro" />
+        <item
+            android:id="@+id/nav_cadastro"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Cadastro" />
+        <item
+            android:id="@+id/nav_configuracoes"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Configurações" />
+    </group>
+
+
+</menu>

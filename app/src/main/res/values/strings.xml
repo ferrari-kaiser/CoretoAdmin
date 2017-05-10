@@ -1,0 +1,81 @@
+<resources>
+    <string name="app_name">CoretoAdmin</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="btnScan">Scan</string>
+    <string name="txtbtnQRcode">Leitor de QR Code</string>
+    <string name="txtbtnBarcode">Leitor de Código de Barra</string>
+
+    <string name="action_trocar_email">Trocar Email</string>
+    <string name="action_solicitar_cartao_pre_pago">Solicitar Cartão Pré-Pago</string>
+    <string name="action_trocar_senha">Trocar Senha</string>
+    <string name="error_invalid_email">Este endereço de email é inválido.</string>
+    <string name="error_invalid_nome">Digite o nome.</string>
+    <string name="error_data_nascimento_invalida">Data de nascimento inválida.</string>
+    <string name="error_invalid">Campo Obrigatório.</string>
+    <string name="error_invalid_cpf">Este cpf é inválido</string>
+    <string name="error_invalid_password">Digite a senha</string>
+    <string name="error_incorrect_password_input">A senha deve possuir números e letras e ter entre 6 e 30 caracteres.</string>
+    <string name="error_incorrect_password_credencial_input">A senha deve possuir entre 4 e 30 caracteres.</string>
+    <string name="error_incorrect_password">A senha é incorreta</string>
+    <string name="error_senhas_incompativeis">As duas senhas não coincidem.</string>
+    <string name="error_field_required">Este campo é obrigatório</string>
+    <string name="error_invalid_card_number">Número de cartão inválido</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="cep_error">CEP invalido</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string-array name="list_estado_civil">
+        <item>Solteiro(a)</item>
+        <item>Casado(a)</item>
+        <item>Divorciado(a)</item>
+        <item>Viúvo(a)</item>
+        <item>Separado(a)</item>
+        <item>Companheiro(a)</item>
+    </string-array>
+
+    <string-array name="list_estados">
+        <item>AC</item>
+        <item>AL</item>
+        <item>AP</item>
+        <item>AM</item>
+        <item>BA</item>
+        <item>CE</item>
+        <item>DF</item>
+        <item>ES</item>
+        <item>GO</item>
+        <item>MA</item>
+        <item>MT</item>
+        <item>MS</item>
+        <item>MG</item>
+        <item>PA</item>
+        <item>PB</item>
+        <item>PR</item>
+        <item>PE</item>
+        <item>PI</item>
+        <item>RJ</item>
+        <item>RN</item>
+        <item>RS</item>
+        <item>RO</item>
+        <item>RO</item>
+        <item>RR</item>
+        <item>SC</item>
+        <item>SP</item>
+        <item>SE</item>
+        <item>TO</item>
+    </string-array>
+
+
+    <string-array name="list_sexo">
+        <item>Masculino</item>
+        <item>Feminino</item>
+        <item>Outros</item>
+    </string-array>
+
+
+</resources>
