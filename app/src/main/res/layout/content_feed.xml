@@ -5,21 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:paddingTop="16dp"
+    android:background="@color/colorWhite"
     tools:context="com.example.ferra.coretoadmin.activity.FeedActivity"
     tools:showIn="@layout/app_bar_feed">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/coreto_android"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,26 +24,29 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/linear_claro"
+                android:id="@+id/linear_acai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="15dp"
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:id="@+id/img_claro"
+                    android:id="@+id/img_acai"
                     android:layout_width="50dp"
+                    android:tint="@color/colorPrimary"
                     android:layout_height="50dp"
-                    android:background="@drawable/acai" />
+                    android:src="@drawable/ic_action_acai" />
 
 
                 <TextView
-                    android:id="@+id/txt_claro"
+                    android:id="@+id/txt_acai"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="Açai"
+                    android:textColor="@color/colorCoreto"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
 
 
@@ -57,10 +57,10 @@
                 android:layout_height="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="8dp"
-                android:src="@color/contentDividerLineGray" />
+                android:src="@color/colorCoreto" />
 
             <LinearLayout
-                android:id="@+id/linear_nextel"
+                android:id="@+id/linear_sorvete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -69,21 +69,24 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/img_nextel"
+                    android:id="@+id/img_sorvete"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/sorvete" />
+                    android:tint="@color/colorPrimary"
+                    android:src="@drawable/ic_action_sorvete" />
 
                 <TextView
-                    android:id="@+id/txt_nextel"
+                    android:id="@+id/txt_sorvete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="Sorvetes"
+                    android:textColor="@color/colorCoreto"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/sp_claro"
+                    android:id="@+id/sp_sorvete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -96,21 +99,22 @@
                 android:layout_height="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="8dp"
-                android:src="@color/contentDividerLineGray" />
+                android:src="@color/colorCoreto" />
 
 
             <LinearLayout
-                android:id="@+id/linear_oi"
+                android:id="@+id/linear_crepe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp">
 
                 <ImageView
-                    android:id="@+id/img_oi"
+                    android:id="@+id/img_crepe"
                     android:layout_width="50dp"
+                    android:tint="@color/colorPrimary"
                     android:layout_height="50dp"
-                    android:background="@drawable/crepe" />
+                    android:src="@drawable/ic_action_crepe" />
 
 
                 <LinearLayout
@@ -119,11 +123,13 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txt_oi"
+                        android:id="@+id/txt_crepe"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="Crepes"
+                        android:textColor="@color/colorCoreto"
+                        android:textSize="20dp"
                         android:textStyle="bold" />
 
 
@@ -136,10 +142,10 @@
                 android:layout_height="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="8dp"
-                android:src="@color/contentDividerLineGray" />
+                android:src="@color/colorCoreto" />
 
             <LinearLayout
-                android:id="@+id/linear_tim"
+                android:id="@+id/linear_caldo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -147,17 +153,20 @@
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:id="@+id/img_tim"
+                    android:id="@+id/img_caldo"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/caldo" />
+                    android:tint="@color/colorPrimary"
+                    android:src="@drawable/ic_action_caldo" />
 
                 <TextView
-                    android:id="@+id/txt_tim"
+                    android:id="@+id/txt_caldo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="Caldos"
+                    android:textColor="@color/colorCoreto"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -167,10 +176,10 @@
                 android:layout_height="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="8dp"
-                android:src="@color/contentDividerLineGray" />
+                android:src="@color/colorCoreto" />
 
             <LinearLayout
-                android:id="@+id/linear_vivo"
+                android:id="@+id/linear_suco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -178,17 +187,20 @@
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:id="@+id/img_vivo"
+                    android:id="@+id/img_suco"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/suco" />
+                    android:tint="@color/colorPrimary"
+                    android:src="@drawable/ic_action_suco" />
 
                 <TextView
-                    android:id="@+id/txt_vivo"
+                    android:id="@+id/txt_suco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="Sucos"
+                    android:textColor="@color/colorCoreto"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -198,7 +210,7 @@
                 android:layout_height="1dp"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="8dp"
-                android:src="@color/contentDividerLineGray" />
+                android:src="@color/colorCoreto" />
         </LinearLayout>
     </ScrollView>
 

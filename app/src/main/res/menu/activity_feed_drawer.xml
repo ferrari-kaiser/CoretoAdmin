@@ -8,11 +8,11 @@
             android:title="Validar Voucher" />
         <item
             android:id="@+id/nav_financeiro"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_action_financeiro"
             android:title="Financeiro" />
         <item
             android:id="@+id/nav_cadastro"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_action_cadastro"
             android:title="Cadastro" />
         <item
             android:id="@+id/nav_configuracoes"

@@ -75,6 +75,8 @@ public class FeedActivity extends AppCompatActivity
 
         if (id == R.id.nav_validar_voucher) {
             // Handle the camera action
+            Intent intent = new Intent(getApplicationContext(), QrCodeActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_financeiro) {
 
