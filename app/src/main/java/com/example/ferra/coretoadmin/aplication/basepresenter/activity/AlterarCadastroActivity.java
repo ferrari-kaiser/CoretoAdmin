@@ -1,4 +1,4 @@
-package com.example.ferra.coretoadmin.activity;
+package com.example.ferra.coretoadmin.aplication.basepresenter.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +9,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ferra.coretoadmin.R;
-import com.example.ferra.coretoadmin.controller.CadastroController;
+import com.example.ferra.coretoadmin.controller.AlterarCadastroController;
 
-public class CadastroActivity extends AppCompatActivity {
+public class AlterarCadastroActivity extends AppCompatActivity {
 
-    CadastroController mController = new CadastroController(this);
+    AlterarCadastroController mController = new AlterarCadastroController(this);
 
     private android.widget.EditText ednome;
     private android.widget.EditText edcpf;
@@ -36,8 +36,7 @@ public class CadastroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro);
-
+        setContentView(R.layout.activity_alterar_cadastro);
         initView();
 
         mController.initDataComponent();
@@ -205,5 +204,4 @@ public class CadastroActivity extends AppCompatActivity {
     public void setEdtelefonecelular(EditText edtelefonecelular) {
         this.edtelefonecelular = edtelefonecelular;
     }
-
 }

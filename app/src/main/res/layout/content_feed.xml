@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingTop="16dp"
     android:background="@color/colorWhite"
-    tools:context="com.example.ferra.coretoadmin.activity.FeedActivity"
+    tools:context=".aplication.basepresenter.activity.FeedActivity"
     tools:showIn="@layout/app_bar_feed">
 
 

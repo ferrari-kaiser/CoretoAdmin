@@ -5,7 +5,15 @@
         <item
             android:id="@+id/nav_validar_voucher"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Validar Voucher" />
+            android:title="Validar Voucher Promocional" />
+        <item
+            android:id="@+id/nav_clientes"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Clientes Cadastrados" />
+        <item
+            android:id="@+id/nav_cardapio"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Cardápio" />
         <item
             android:id="@+id/nav_financeiro"
             android:icon="@drawable/ic_action_financeiro"
@@ -18,6 +26,10 @@
             android:id="@+id/nav_configuracoes"
             android:icon="@drawable/ic_menu_manage"
             android:title="Configurações" />
+        <item
+            android:id="@+id/nav_sair"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Sair" />
     </group>
 
 

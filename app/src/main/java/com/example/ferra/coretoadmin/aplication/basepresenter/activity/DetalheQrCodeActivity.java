@@ -1,4 +1,4 @@
-package com.example.ferra.coretoadmin.activity;
+package com.example.ferra.coretoadmin.aplication.basepresenter.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,4 +30,10 @@ public class DetalheQrCodeActivity extends AppCompatActivity {
             mFormat.setText(format);
         }
     }
+//    public void onBackPressed() {
+//
+//        Intent intent = new Intent(getApplication(), FeedActivity.class);
+//        startActivity(intent);
+//
+//    }
 }

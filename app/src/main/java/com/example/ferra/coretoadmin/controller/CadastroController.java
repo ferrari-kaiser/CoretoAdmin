@@ -1,7 +1,7 @@
 package com.example.ferra.coretoadmin.controller;
 
 import com.example.ferra.coretoadmin.R;
-import com.example.ferra.coretoadmin.activity.CadastroActivity;
+import com.example.ferra.coretoadmin.aplication.basepresenter.activity.CadastroActivity;
 import com.example.ferra.coretoadmin.util.Utils;
 import com.example.ferra.coretoadmin.util.mask.MaskEditTextChangedListener;
 import com.example.ferra.coretoadmin.util.validations.ValidationsForms;

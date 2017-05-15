@@ -1,4 +1,4 @@
-package com.example.ferra.coretoadmin.activity;
+package com.example.ferra.coretoadmin.aplication.basepresenter.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run(){
 
-                Intent intent = new Intent(SplashActivity.this, FeedActivity.class);
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
 
                 finish();

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.ferra.coretoadmin.activity.DetalheQrCodeActivity">
+    tools:context=".aplication.basepresenter.activity.DetalheQrCodeActivity">
 
     <TextView
         android:layout_width="match_parent"

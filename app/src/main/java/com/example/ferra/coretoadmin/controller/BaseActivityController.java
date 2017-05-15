@@ -1,12 +1,12 @@
 package com.example.ferra.coretoadmin.controller;
 
-import com.example.ferra.coretoadmin.activity.CadastroActivity;
+import android.app.Activity;
 
 /**
  * Created by ferrari on 09/05/2017.
  */
 
-public abstract class BaseActivityController<T extends CadastroActivity> {
+public abstract class BaseActivityController<T extends Activity> {
 
     protected T activity;
 
