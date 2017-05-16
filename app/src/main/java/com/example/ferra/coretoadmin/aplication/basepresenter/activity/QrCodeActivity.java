@@ -1,6 +1,7 @@
 package com.example.ferra.coretoadmin.aplication.basepresenter.activity;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -28,16 +29,13 @@ public class QrCodeActivity extends AppCompatActivity implements ZXingScannerVie
 
 
     public void scanQR() {
-//        try {
-//            Intent intent = new Intent(ACTION_SCAN);
-//            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-//            startActivityForResult(intent, 0);
-//        } catch (ActivityNotFoundException anfe) {
+        try {
+            Intent intent = new Intent(ACTION_SCAN);
+            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+            startActivityForResult(intent, 0);
+        } catch (ActivityNotFoundException anfe) {
 //            showDialog(this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
-//        }
-
-        IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.initiateScan();
+        }
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
