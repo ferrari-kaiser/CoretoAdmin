@@ -1,7 +1,6 @@
 package com.example.ferra.coretoadmin.aplication.basepresenter.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.*;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.ferra.coretoadmin.R;
@@ -12,13 +11,17 @@ public class FinanceiroActivity extends AppCompatActivity {
     private IndicadorGastoFragment mIndicadorGastoFragment;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_financeiro);
 
-        FragmentManager mFragmentManager;
-        FragmentTransaction mFragmentTransaction;
+        getSupportFragmentManager().findFragmentById(R.id.tv_title);
+
+
+        android.support.v4.app.FragmentManager mFragmentManager;
+        android.support.v4.app.FragmentTransaction mFragmentTransaction;
 
         mIndicadorGastoFragment = new IndicadorGastoFragment();
         mFragmentManager = getSupportFragmentManager();
@@ -26,5 +29,13 @@ public class FinanceiroActivity extends AppCompatActivity {
         mFragmentTransaction.replace(R.id.container, mIndicadorGastoFragment);
         mFragmentTransaction.commit();
 
+
+
+
+
     }
+
+
+
+
 }

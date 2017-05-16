@@ -8,11 +8,19 @@
     tools:context=".aplication.basepresenter.activity.FinanceiroActivity">
 
     <LinearLayout
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"/>
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.ferra.coretoadmin.panel.fragment.IndicadorGastoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
 
+    </LinearLayout>
 
 </LinearLayout>

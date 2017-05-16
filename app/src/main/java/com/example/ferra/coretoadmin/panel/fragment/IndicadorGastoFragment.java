@@ -15,7 +15,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.ferra.coretoadmin.R;
-import com.example.ferra.coretoadmin.panel.interfaces.IIndicatorsCalback;
 import com.example.ferra.coretoadmin.panel.presenter.IndicatorsFragmentPresenter;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -48,7 +47,7 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the fragment and get the view
-        mView = inflater.inflate(R.layout.fragment_indicador_gasto, container, false);
+        mView = inflater.inflate(R.layout.fragment_indicador_gasto, null);
 
         mChart = (PieChart)mView.findViewById(R.id.chart_applications_distribution);
         mTableContainer =(TableLayout)mView.findViewById(R.id.tl_values_table_container);
