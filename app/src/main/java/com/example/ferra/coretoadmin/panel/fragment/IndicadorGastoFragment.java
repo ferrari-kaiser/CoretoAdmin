@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class IndicadorGastoFragment extends Fragment implements OnChartValueSelectedListener, IIndicatorsCalback {
+public class IndicadorGastoFragment extends Fragment implements OnChartValueSelectedListener {
 
     protected TableLayout mTableContainer;
     private ArrayList<Float> yData;
@@ -56,22 +56,42 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
         yData = new ArrayList<Float>();
         xData = new ArrayList<String>();
 
+
+        yData.add(300.0f);
+        yData.add(2000.0f);
+        yData.add(10000.0f);
+
+        xData.add("Reforma da maquina");
+        xData.add("Pagamento de funcionario");
+        xData.add("Pagamento de aluguel");
         // add a lot of colors
         mColors = new ArrayList <Integer>();
+
+        mColors.add(Color.parseColor("#71A9D7"));
+        mColors.add(Color.parseColor("#32BBCF"));
+        mColors.add(Color.parseColor("#FFE461"));
+        mColors.add(Color.parseColor("#0C7CBA"));
+        mColors.add(Color.parseColor("#0A5988"));
+        mColors.add(Color.parseColor("#5D7AA1"));
+        mColors.add(Color.parseColor("#87A5AF"));
+        mColors.add(Color.parseColor("#BCD0AC"));
+        mColors.add(Color.parseColor("#E6E88B"));
+        mColors.add(Color.parseColor("#C2A370"));
+        mColors.add(Color.parseColor("#936661"));
+        mColors.add(Color.parseColor("#522F84"));
+        mColors.add(Color.parseColor("#FF7043"));
+        mColors.add(Color.parseColor("#9FC5F8"));
+        mColors.add(Color.parseColor("#FF4081"));
+
+
+        initChart();
+        setTableData();
 
         return mView;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mIndicatorsFragmentPresenter = new IndicatorsFragmentPresenter(getContext(),this);
-        mIndicatorsFragmentPresenter.listSpents();
-    }
-
 
     private void initChart() {
-
 
         mChart.setUsePercentValues(false);
 
@@ -140,15 +160,13 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
         dataset.setColors(mColors);
 
         //Intantiate pie data object
-        PieData data = new PieData();
-//        data.setDataSet(data);
+        PieData data = new PieData(dataset);
 
         data.setValueFormatter(new PercentFormatter());
 
         mChart.setData(data);
         mChart.highlightValue(null);
         mChart.invalidate();
-
     }
 
     //    TableLayout
@@ -270,33 +288,6 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
     //    Interface Calbacks
     @Override
     public void onNothingSelected() {
-
-    }
-
-
-    @Override
-    public void showIndicatorsSucess(ArrayList<String> category, ArrayList<Float> valueTotalCategoria,
-                                     ArrayList<Integer> colors, Float totalSomaValue) {
-        mtotalSomaValue = totalSomaValue;
-        xData = category;
-        yData = valueTotalCategoria;
-        mColors = colors;
-        initChart();
-        setTableData();
-    }
-
-    @Override
-    public void showIndicatorsError(String error) {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
 
     }
 }
