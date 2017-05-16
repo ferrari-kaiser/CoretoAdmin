@@ -2,7 +2,9 @@ package com.example.ferra.coretoadmin.aplication.basepresenter.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -35,6 +37,8 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
     private Context mContext;
     private View mMainView;
 
+    private AlertDialog alerta;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,11 +65,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("SAIR", true);
-            startActivity(intent);
-//            alertaSair();
+           alertaSair();
         }
 
         return super.onOptionsItemSelected(item);
@@ -98,7 +98,8 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             // Handle the camera action
 //            Intent intent = new Intent(getApplicationContext(), QrCodeActivity.class);
 //            startActivity(intent);
-            scanQR();
+            alertaQRCode();
+
         } else if (id == R.id.nav_cardapio) {
 
             Intent intent = new Intent(getApplicationContext(), CardapioActivity.class);
@@ -122,20 +123,48 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
         } else if (id == R.id.nav_sair) {
 
-            Intent  intent = new Intent(getApplicationContext(), LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("SAIR", true);
-            startActivity(intent);
-//
-//            alertaSair();
+//            Intent  intent = new Intent(getApplicationContext(), LoginActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            intent.putExtra("SAIR", true);
+//            startActivity(intent);
 
-//            logout();
+
+            alertaSair();
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
+    }
+
+    private void alertaQRCode() {
+
+        //Cria o gerador do AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //define o titulo
+        builder.setTitle("Coreto Admin");
+        //define a mensagem
+        builder.setMessage("Deseja Validar o Voucher Promocional com a câmera do celular?");
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+
+               scanQR();
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+//                Toast.makeText(getmContext(), "não=" + arg1, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        //cria o AlertDialog
+        alerta = builder.create();
+        //Exibe
+        alerta.show();
 
     }
 
@@ -176,42 +205,39 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
 
 
-//    private void alertaSair() {
-//        //Cria o gerador do AlertDialog
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        //define o titulo
-//        builder.setTitle("Coreto Admin");
-//        //define a mensagem
-//        builder.setMessage("Você deseja realmente sair?");
-//        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface arg0, int arg1) {
-//                Intent intent = new Intent(getApplication(), LoginActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        //define um botão como negativo.
-//        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-//            public void onClick(DialogInterface arg0, int arg1) {
-//
-//            }
-//        });
-//
-//        alerta = builder.create();
+    //atributo da classe.
 
-//    public void logout(){
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-//        builder.setCancelable(false).setTitle("Coreto Admin").setMessage("Tem certeza que deseja sair?")
-//                .setPositiveButton("Sair", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        finish();
-//                    }
-//                })
-//                .setNegativeButton("Não", null)
-//                .setCancelable(true);
-//        builder.create().show();
+    private void alertaSair() {
+        //Cria o gerador do AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //define o titulo
+        builder.setTitle("Coreto Admin");
+        //define a mensagem
+        builder.setMessage("Tem certeza que deseja sair?");
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+//                getParent().finish();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    finishAffinity();
 
-//    }
+                }
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+//                Toast.makeText(getmContext(), "não=" + arg1, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        //cria o AlertDialog
+        alerta = builder.create();
+        //Exibe
+        alerta.show();
+    }
+
+
 
 
 

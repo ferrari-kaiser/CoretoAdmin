@@ -17,6 +17,8 @@ public class FinanceiroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_financeiro);
 
+        getSupportFragmentManager().findFragmentById(R.id.tv_title);
+
 
 //        android.support.v4.app.FragmentManager mFragmentManager;
 //        android.support.v4.app.FragmentTransaction mFragmentTransaction;
