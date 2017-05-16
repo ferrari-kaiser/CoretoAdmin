@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/gasto"
-    tools:context=".panel.fragment.IndicadorGastoFragment">
+    android:id="@+id/gasto">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -17,7 +16,7 @@
 
 
 
-            <com.example.ferra.coretoadmin.util.txtview.CustomTextView
+            <TextView
                 android:id="@+id/tv_title"
                 style="@style/text_title"
                 android:text="@string/indicators_title" />
