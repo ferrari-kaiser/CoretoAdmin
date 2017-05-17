@@ -9,7 +9,7 @@ import com.example.ferra.coretoadmin.R;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static int TEMPO_SPLASH = 3000;
+    private static int TEMPO_SPLASH = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

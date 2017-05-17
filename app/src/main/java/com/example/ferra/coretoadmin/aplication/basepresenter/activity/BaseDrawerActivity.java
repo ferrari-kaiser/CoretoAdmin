@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,7 +27,7 @@ import com.google.zxing.integration.android.IntentResult;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 /**
- * Created by ferra on 15/05/2017.
+ * Created by ferrari on 15/05/2017.
  */
 
 public class BaseDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener , ZXingScannerView.ResultHandler {
@@ -200,6 +199,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            alertaSair();
         }
     }
 
@@ -207,7 +207,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
     //atributo da classe.
 
-    private void alertaSair() {
+    void alertaSair() {
         //Cria o gerador do AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //define o titulo
@@ -218,10 +218,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
 //                getParent().finish();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    finishAffinity();
-
-                }
+                  finish();
             }
         });
         //define um botão como negativo.

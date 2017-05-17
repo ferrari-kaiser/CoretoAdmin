@@ -60,9 +60,9 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
         yData.add(2000.0f);
         yData.add(10000.0f);
 
-        xData.add("Reforma da maquina");
-        xData.add("Pagamento de funcionario");
-        xData.add("Pagamento de aluguel");
+        xData.add("Gasto 1");
+        xData.add("Gasto 2");
+        xData.add("Gasto 3");
         // add a lot of colors
         mColors = new ArrayList <Integer>();
 
@@ -170,13 +170,14 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
 
     //    TableLayout
     private void setTableData() {
+        mTableContainer.removeAllViews();
         int listCounter = 0;
         int emptyCounter = 0;
 
         for (int i = 0; i < xData.size(); i++) {
 
             String dataName = xData.get(i);
-            Float dataValue = yData.get(i);
+            String dataValue = ("R$ " + yData.get(i));
 
             View tableItem = getActivity().getLayoutInflater().inflate(R.layout.applications_distribution_item, mTableContainer, false);
 
@@ -220,7 +221,7 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
                 itemImageView.setImageResource(R.mipmap.ic_saude);
                 break;
             default:
-                itemImageView.setImageResource(R.mipmap.ic_launcher);
+                itemImageView.setImageResource(R.mipmap.ic_transporte);
                 break;
         }
 
@@ -240,7 +241,7 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
 
                     xData.get(mPosition);
                     mChart.highlightValue(mPosition, 0);
-                    mChart.setCenterText(generateCenterSpannableText(String.valueOf(yData.get(mPosition)) + "%"));
+                    mChart.setCenterText(generateCenterSpannableText("R$" + String.valueOf(yData.get(mPosition))));
                     for (int i = 0; i < mTableContainer.getChildCount(); i++) {
                         TableRow row = (TableRow) mTableContainer.getChildAt(i);
                         ((TextView) row.findViewById(R.id.tv_product_name)).setTypeface(null, Typeface.NORMAL);
@@ -253,12 +254,12 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
     }
 
     private SpannableString generateCenterSpannableText(String text) {
-        text = text.replace("%", "");
+        text = text.replace("R$", "");
         if (Float.parseFloat(text) == 100) {
             text = text.replace(".0", "");
-            text = String.valueOf(Integer.parseInt(text)).concat("%");
+            text = String.valueOf(Integer.parseInt(text)).concat("R$");
         } else {
-            text = String.format("%.2f", Float.parseFloat(text)).concat("%").replace(".", ",");
+            text = String.format("R$"+"%.2f", Float.parseFloat(text)).concat("").replace(".", ",");
         }
 
         SpannableString s = new SpannableString(text);
