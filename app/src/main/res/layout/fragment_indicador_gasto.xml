@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gasto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/gasto">
+    android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -40,6 +40,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_10dp"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 android:text="@string/list_spent"
                 android:textColor="@color/colorBlack" />
@@ -48,6 +49,8 @@
                 android:id="@+id/tl_values_table_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="@dimen/dimen_8dp"
                 android:orientation="vertical"
                 android:stretchColumns="0" />

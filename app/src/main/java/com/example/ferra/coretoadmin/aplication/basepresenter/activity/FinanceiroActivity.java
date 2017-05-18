@@ -26,7 +26,7 @@ public class FinanceiroActivity extends AppCompatActivity {
         mIndicadorGastoFragment = new IndicadorGastoFragment();
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.container, mIndicadorGastoFragment);
+        mFragmentTransaction.replace(R.id.fragment, mIndicadorGastoFragment);
         mFragmentTransaction.commit();
 
 

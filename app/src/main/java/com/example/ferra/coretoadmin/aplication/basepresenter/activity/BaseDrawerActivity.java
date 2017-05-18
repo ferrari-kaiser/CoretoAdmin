@@ -122,7 +122,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
         } else if (id == R.id.nav_sair) {
 
-//            Intent  intent = new Intent(getApplicationContext(), LoginActivity.class);
+//            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 //            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //            intent.putExtra("SAIR", true);
 //            startActivity(intent);
@@ -198,8 +198,8 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
             alertaSair();
+//            super.onBackPressed();
         }
     }
 

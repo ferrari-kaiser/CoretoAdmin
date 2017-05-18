@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.ferra.coretoadmin.R;
 import com.example.ferra.coretoadmin.panel.presenter.IndicatorsFragmentPresenter;
+import com.example.ferra.coretoadmin.util.Utils;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -103,7 +104,7 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
 
         mChart.setHoleRadius(58f);
         mChart.setTransparentCircleRadius(61f);
-        mChart.setCenterText("R$" + mtotalSomaValue);
+        mChart.setCenterText("R$ 12.300,00");
         mChart.setDrawCenterText(true);
 
         mChart.setRotationAngle(0);
@@ -161,7 +162,7 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
         //Intantiate pie data object
         PieData data = new PieData(dataset);
 
-        data.setValueFormatter(new PercentFormatter());
+//        data.setValueFormatter(new PercentFormatter());
 
         mChart.setData(data);
         mChart.highlightValue(null);
@@ -177,7 +178,7 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
         for (int i = 0; i < xData.size(); i++) {
 
             String dataName = xData.get(i);
-            String dataValue = ("R$ " + yData.get(i));
+            String dataValue = ("R$ " + Utils.formataMoeda(yData.get(i)));
 
             View tableItem = getActivity().getLayoutInflater().inflate(R.layout.applications_distribution_item, mTableContainer, false);
 
@@ -221,7 +222,7 @@ public class IndicadorGastoFragment extends Fragment implements OnChartValueSele
                 itemImageView.setImageResource(R.mipmap.ic_saude);
                 break;
             default:
-                itemImageView.setImageResource(R.mipmap.ic_transporte);
+                itemImageView.setImageResource(R.drawable.seta);
                 break;
         }
 
