@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,8 +24,6 @@ import android.widget.Toast;
 
 import com.example.ferra.coretoadmin.R;
 import com.google.zxing.Result;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -32,7 +31,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  * Created by ferrari on 15/05/2017.
  */
 
-public class BaseDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener , ZXingScannerView.ResultHandler {
+public class BaseDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ZXingScannerView.ResultHandler {
 
     private int mLayoutView;
     private Context mContext;
@@ -58,6 +57,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         getMenuInflater().inflate(R.menu.feed, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -68,7 +68,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 
-           alertaSair();
+            alertaSair();
         }
 
         return super.onOptionsItemSelected(item);
@@ -79,7 +79,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
         Toolbar toolbar = (Toolbar) mMainView.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
 
         DrawerLayout drawer = (DrawerLayout) mMainView.findViewById(R.id.drawer_layout);
@@ -98,9 +97,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         int id = item.getItemId();
 
         if (id == R.id.nav_validar_voucher) {
-            // Handle the camera action
-//            Intent intent = new Intent(getApplicationContext(), QrCodeActivity.class);
-//            startActivity(intent);
+
             alertaQRCode();
 
         } else if (id == R.id.nav_cardapio) {
@@ -117,7 +114,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
             Intent intent = new Intent(getApplicationContext(), AlterarCadastroActivity.class);
             startActivity(intent);
 
-        }else if (id == R.id.nav_clientes) {
+        } else if (id == R.id.nav_clientes) {
 
             Intent intent = new Intent(getApplicationContext(), PesquisarClientesActivity.class);
             startActivity(intent);
@@ -125,12 +122,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         } else if (id == R.id.nav_configuracoes) {
 
         } else if (id == R.id.nav_sair) {
-
-//            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            intent.putExtra("SAIR", true);
-//            startActivity(intent);
-
 
             alertaSair();
 
@@ -154,7 +145,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
 
-               scanQR();
+                scanQR();
             }
         });
         //define um botão como negativo.
@@ -208,7 +199,6 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
     }
 
 
-
     //atributo da classe.
 
     void alertaSair() {
@@ -222,7 +212,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
 //                getParent().finish();
-                  finish();
+                finish();
             }
         });
         //define um botão como negativo.
@@ -239,23 +229,39 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
     }
 
 
-
-
-
-//    Funcionalidade QrCode
-
+    //    Funcionalidade QrCode
     public void scanQR() {
         try {
             Intent intent = new Intent(ACTION_SCAN);
             intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
             startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException anfe) {
-//            showDialog(this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
+        showDialog(this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
         }
-
-//        IntentIntegrator integrator = new IntentIntegrator(this);
-//        integrator.initiateScan();
     }
+
+    private static AlertDialog showDialog(final Activity act, CharSequence title, CharSequence message, CharSequence buttonYes, CharSequence buttonNo) {
+        AlertDialog.Builder downloadDialog = new AlertDialog.Builder(act);
+        downloadDialog.setTitle(title);
+        downloadDialog.setMessage(message);
+        downloadDialog.setPositiveButton(buttonYes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Uri uri = Uri.parse("market://search?q=pname:" + "com.google.zxing.client.android");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                try {
+                    act.startActivity(intent);
+                } catch (ActivityNotFoundException anfe) {
+
+                }
+            }
+        });
+        downloadDialog.setNegativeButton(buttonNo, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        return downloadDialog.show();
+    }
+
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == 0) {
@@ -265,41 +271,27 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
                 Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
                 toast.show();
-
-
-                Toast toast2 = Toast.makeText(this, "Voucher validado com sucesso", Toast.LENGTH_LONG);
-                toast2.show();
             }
         }
     }
-
 //    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-//        switch (requestCode) {
-//            case IntentIntegrator.REQUEST_CODE:
-//                if (resultCode == Activity.RESULT_OK) {
+//        if (requestCode == 0) {
+//            if (resultCode == RESULT_OK) {
+//                String contents = intent.getStringExtra("SCAN_RESULT");
+//                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 //
-//                    IntentResult intentResult =
-//                            IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+//                Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
+//                toast.show();
 //
-//                    if (intentResult != null) {
 //
-//                        String contents = intentResult.getContents();
-//                        String format = intentResult.getFormatName();
-//                        Intent intent1 = new Intent(getApplicationContext(),DetalheQrCodeActivity.class);
-//                        intent.putExtra("contents",contents);
-//                        intent.putExtra("format",format);
-//                        startActivity(intent1);
-//                        //this.elemQuery.setText(contents);
-//                        //this.resume = false;
-//                        Log.d("SEARCH_EAN", "OK, EAN: " + contents + ", FORMAT: " + format);
-//                    } else {
-//                        Log.e("SEARCH_EAN", "IntentResult je NULL!");
-//                    }
-//                } else if (resultCode == Activity.RESULT_CANCELED) {
-//                    Log.e("SEARCH_EAN", "CANCEL");
-//                }
+//                Toast toast2 = Toast.makeText(this, "Voucher validado com sucesso", Toast.LENGTH_LONG);
+//                toast2.show();
+//            }
 //        }
 //    }
+
+
+
 
     @Override
     public void handleResult(Result rawResult) {

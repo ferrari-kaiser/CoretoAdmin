@@ -8,6 +8,8 @@ import com.example.ferra.coretoadmin.R;
 
 public class DetalheQrCodeActivity extends AppCompatActivity {
 
+    TextView mContent;
+    TextView mFormat;
 
 
     @Override
@@ -18,8 +20,8 @@ public class DetalheQrCodeActivity extends AppCompatActivity {
         String contents = getIntent().getStringExtra("SCAN_RESULT");
         String format = getIntent().getStringExtra("SCAN_RESULT_FORMAT");
 
-        TextView mContent = (TextView) findViewById(R.id.contents);
-        TextView mFormat = (TextView) findViewById(R.id.format);
+        mContent = (TextView) findViewById(R.id.contents);
+        mFormat = (TextView) findViewById(R.id.format);
 
 
         if(contents !=null){
