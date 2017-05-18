@@ -263,6 +263,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
     }
 
 
+
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
@@ -271,24 +272,13 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
                 Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
                 toast.show();
+
+
+                Toast toast2 = Toast.makeText(this, "Voucher validado com sucesso", Toast.LENGTH_LONG);
+                toast2.show();
             }
         }
     }
-//    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-//        if (requestCode == 0) {
-//            if (resultCode == RESULT_OK) {
-//                String contents = intent.getStringExtra("SCAN_RESULT");
-//                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
-//
-//                Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
-//                toast.show();
-//
-//
-//                Toast toast2 = Toast.makeText(this, "Voucher validado com sucesso", Toast.LENGTH_LONG);
-//                toast2.show();
-//            }
-//        }
-//    }
 
 
 
