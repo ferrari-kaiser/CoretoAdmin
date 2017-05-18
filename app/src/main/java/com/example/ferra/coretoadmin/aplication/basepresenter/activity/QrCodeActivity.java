@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.ferra.coretoadmin.R;
 import com.google.zxing.Result;
@@ -39,32 +40,47 @@ public class QrCodeActivity extends AppCompatActivity implements ZXingScannerVie
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        switch (requestCode) {
-            case IntentIntegrator.REQUEST_CODE:
-                if (resultCode == Activity.RESULT_OK) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                String contents = intent.getStringExtra("SCAN_RESULT");
+                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 
-                    IntentResult intentResult =
-                            IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-
-                    if (intentResult != null) {
-
-                        String contents = intentResult.getContents();
-                        String format = intentResult.getFormatName();
-                        Intent intent1 = new Intent(getApplicationContext(),DetalheQrCodeActivity.class);
-                        intent.putExtra("contents",contents);
-                        intent.putExtra("format",format);
-                        startActivity(intent1);
-                        //this.elemQuery.setText(contents);
-                        //this.resume = false;
-                        Log.d("SEARCH_EAN", "OK, EAN: " + contents + ", FORMAT: " + format);
-                    } else {
-                        Log.e("SEARCH_EAN", "IntentResult je NULL!");
-                    }
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    Log.e("SEARCH_EAN", "CANCEL");
-                }
+                Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
+                toast.show();
+            }
         }
     }
+
+//    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+//        switch (requestCode) {
+//            case IntentIntegrator.REQUEST_CODE:
+//                if (resultCode == Activity.RESULT_OK) {
+//
+//                    IntentResult intentResult =
+//                            IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+//
+//                    if (intentResult != null) {
+//
+//                        String contents = intent.getStringExtra("SCAN_RESULT");
+//                        String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+//
+////                        String contents = intentResult.getContents();
+////                        String format = intentResult.getFormatName();
+//                        Intent intent1 = new Intent(getApplicationContext(),DetalheQrCodeActivity.class);
+//                        intent.putExtra("contents",contents);
+//                        intent.putExtra("format",format);
+//                        startActivity(intent1);
+//                        //this.elemQuery.setText(contents);
+//                        //this.resume = false;
+//                        Log.d("SEARCH_EAN", "OK, EAN: " + contents + ", FORMAT: " + format);
+//                    } else {
+//                        Log.e("SEARCH_EAN", "IntentResult je NULL!");
+//                    }
+//                } else if (resultCode == Activity.RESULT_CANCELED) {
+//                    Log.e("SEARCH_EAN", "CANCEL");
+//                }
+//        }
+//    }
 
     @Override
     public void handleResult(Result rawResult) {

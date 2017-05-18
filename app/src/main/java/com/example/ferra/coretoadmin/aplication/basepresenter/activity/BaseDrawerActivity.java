@@ -1,6 +1,7 @@
 package com.example.ferra.coretoadmin.aplication.basepresenter.activity;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.ferra.coretoadmin.R;
 import com.google.zxing.Result;
@@ -37,6 +39,8 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
     private View mMainView;
 
     private AlertDialog alerta;
+
+    static final String ACTION_SCAN = "com.google.zxing.client.android.SCAN";
 
 
     @Override
@@ -241,45 +245,61 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 //    Funcionalidade QrCode
 
     public void scanQR() {
-//        try {
-//            Intent intent = new Intent(ACTION_SCAN);
-//            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-//            startActivityForResult(intent, 0);
-//        } catch (ActivityNotFoundException anfe) {
+        try {
+            Intent intent = new Intent(ACTION_SCAN);
+            intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+            startActivityForResult(intent, 0);
+        } catch (ActivityNotFoundException anfe) {
 //            showDialog(this, "No Scanner Found", "Download a scanner code activity?", "Yes", "No").show();
-//        }
+        }
 
-        IntentIntegrator integrator = new IntentIntegrator(this);
-        integrator.initiateScan();
+//        IntentIntegrator integrator = new IntentIntegrator(this);
+//        integrator.initiateScan();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        switch (requestCode) {
-            case IntentIntegrator.REQUEST_CODE:
-                if (resultCode == Activity.RESULT_OK) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                String contents = intent.getStringExtra("SCAN_RESULT");
+                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 
-                    IntentResult intentResult =
-                            IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+                Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
+                toast.show();
 
-                    if (intentResult != null) {
 
-                        String contents = intentResult.getContents();
-                        String format = intentResult.getFormatName();
-                        Intent intent1 = new Intent(getApplicationContext(),DetalheQrCodeActivity.class);
-                        intent.putExtra("contents",contents);
-                        intent.putExtra("format",format);
-                        startActivity(intent1);
-                        //this.elemQuery.setText(contents);
-                        //this.resume = false;
-                        Log.d("SEARCH_EAN", "OK, EAN: " + contents + ", FORMAT: " + format);
-                    } else {
-                        Log.e("SEARCH_EAN", "IntentResult je NULL!");
-                    }
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    Log.e("SEARCH_EAN", "CANCEL");
-                }
+                Toast toast2 = Toast.makeText(this, "Voucher validado com sucesso", Toast.LENGTH_LONG);
+                toast2.show();
+            }
         }
     }
+
+//    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+//        switch (requestCode) {
+//            case IntentIntegrator.REQUEST_CODE:
+//                if (resultCode == Activity.RESULT_OK) {
+//
+//                    IntentResult intentResult =
+//                            IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+//
+//                    if (intentResult != null) {
+//
+//                        String contents = intentResult.getContents();
+//                        String format = intentResult.getFormatName();
+//                        Intent intent1 = new Intent(getApplicationContext(),DetalheQrCodeActivity.class);
+//                        intent.putExtra("contents",contents);
+//                        intent.putExtra("format",format);
+//                        startActivity(intent1);
+//                        //this.elemQuery.setText(contents);
+//                        //this.resume = false;
+//                        Log.d("SEARCH_EAN", "OK, EAN: " + contents + ", FORMAT: " + format);
+//                    } else {
+//                        Log.e("SEARCH_EAN", "IntentResult je NULL!");
+//                    }
+//                } else if (resultCode == Activity.RESULT_CANCELED) {
+//                    Log.e("SEARCH_EAN", "CANCEL");
+//                }
+//        }
+//    }
 
     @Override
     public void handleResult(Result rawResult) {
