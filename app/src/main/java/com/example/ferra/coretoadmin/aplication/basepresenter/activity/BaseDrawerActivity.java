@@ -270,6 +270,12 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 
+                Intent intent2 = new Intent(getBaseContext(),DetalheQrCodeActivity.class);
+                intent2.putExtra("contents", contents);
+                intent.putExtra("format",format);
+
+                startActivity(intent2);
+
                 Toast toast = Toast.makeText(this, "Content:" + contents + " Format:" + format, Toast.LENGTH_LONG);
                 toast.show();
 
