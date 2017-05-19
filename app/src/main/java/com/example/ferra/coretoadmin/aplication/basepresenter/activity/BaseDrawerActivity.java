@@ -272,7 +272,7 @@ public class BaseDrawerActivity extends AppCompatActivity implements NavigationV
 
                 Intent intent2 = new Intent(getBaseContext(),DetalheQrCodeActivity.class);
                 intent2.putExtra("contents", contents);
-                intent.putExtra("format",format);
+                intent2.putExtra("format",format);
 
                 startActivity(intent2);
 
